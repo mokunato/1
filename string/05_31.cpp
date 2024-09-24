@@ -190,9 +190,9 @@ void Encode(vector <char> num){
         else if(num[i]==','){
             for(k=0;k<4;k++){
                 j=reset(j);
-                if(isalpha(word[j])&&(k==1||k==3)) {
+                if(isalpha(word[j])&&(k==1)) {
                     cout<<upper(word[j]);
-                }else if(isalpha(word[j])&&(k==0||k==2)) {
+                }else if(isalpha(word[j])&&(k==0||k==2||k==3)) {
                     cout<<lower(word[j]);
                 }
                 else {
@@ -204,8 +204,69 @@ void Encode(vector <char> num){
         }
     }
 }
-void Decode(vector <char> code){
-    
+void Decode(vector <char> Decode){
+    int i,j,k,l=0;
+    vector <int> check;
+    vector <char> code;
+    vector <int> x[12]={{2,2,2,2},{2,2,2,1},{2,2,1,2},{2,2,1,1},{2,1,2,2},{2,1,2,1},{2,1,1,2},{2,1,1,1},{1,2,2,2},{1,2,2,1},{1,2,1,2},{1,2,1,1}};
+    for(i=0;i<Decode.size();i++){
+        if(isalpha(Decode[i])){
+            code.push_back(Decode[i]);
+        }
+    }
+    for(i=0;i<code.size();i++){
+        check.clear();
+        check.resize(4);
+        for(j=0;j<4;j++){
+            if(isupper(code[l])){
+                check[j]=2;
+            }
+            else if(islower(code[l])){
+                check[j]=1;
+            }
+            else{
+                j--;
+            }
+            l++;
+        }
+        if(check==x[0]){
+            cout<<0;
+        }
+        else if(check==x[1]){
+            cout<<1;
+        }
+        else if(check==x[2]){
+            cout<<2;
+        }
+        else if(check==x[3]){
+            cout<<3;
+        }
+        else if(check==x[4]){
+            cout<<4;
+        }
+        else if(check==x[5]){
+            cout<<5;
+        }
+        else if(check==x[6]){
+            cout<<6;
+        }
+        else if(check==x[7]){
+            cout<<7;
+        }
+        else if(check==x[8]){
+            cout<<8;
+        }
+        else if(check==x[9]){
+            cout<<9;
+        }
+        else if(check==x[10]){
+            cout<<'-';
+        }
+        else if(check==x[11]){
+            cout<<',';
+        }
+        i=l;
+    }
 }
 int main(){
     getline(cin,word);
